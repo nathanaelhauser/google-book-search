@@ -1,11 +1,29 @@
-import React from 'react';
+import React from 'react'
+import { 
+  BrowserRouter as Router,
+  Switch,
+  Route
+ } from 'react-router-dom'
+import Home from './pages/Home'
+import Search from './pages/Search'
+import Saved from './pages/Saved'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-    
-    </div>
-  );
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/saved">
+          <Saved />
+        </Route>
+        <Route path="/search">
+          <Search />
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
 
-export default App;
+export default App
