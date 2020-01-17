@@ -4,7 +4,7 @@ module.exports = app => {
 
   // Get all books
   app.get('/books', (req, res) => {
-    Book.findAll() 
+    Book.find() 
       .then(books => res.json(books))
       .catch(e => console.log(e))
   })
@@ -18,9 +18,16 @@ module.exports = app => {
 
   // Add a book
   app.post('/books', (req, res) => {
-    Book.create(req.body)
-      .then(book => res.json(book))
-      .catch(e => console.log(e))
+    console.log('trying to create')
+    console.log(req)
+    // Book.create(req.body)
+    //   .then(book => {
+    //     console.log('created a book')
+    //     console.log(book)
+    //     res.json(book)
+    //   })
+    //   .catch(e => console.log(e))
+    res.sendStatus(200)
   })
 
   // Update a book
