@@ -18,15 +18,9 @@ module.exports = app => {
 
   // Add a book
   app.post('/books', (req, res) => {
-    console.log('trying to create')
-    res.json(req.body)
-    // Book.create(req.body)
-    //   .then(book => {
-    //     console.log('created a book')
-    //     console.log(book)
-    //     res.json(book)
-    //   })
-    //   .catch(e => console.log(e))
+    Book.create(req.body)
+      .then(book => res.json(book))
+      .catch(e => console.log(e))
   })
 
   // Update a book
