@@ -19,7 +19,7 @@ module.exports = app => {
   // Add a book
   app.post('/books', (req, res) => {
     console.log('trying to create')
-    console.log(req)
+    res.json(req.body)
     // Book.create(req.body)
     //   .then(book => {
     //     console.log('created a book')
@@ -27,7 +27,6 @@ module.exports = app => {
     //     res.json(book)
     //   })
     //   .catch(e => console.log(e))
-    res.sendStatus(200)
   })
 
   // Update a book
