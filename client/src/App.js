@@ -7,11 +7,15 @@ import {
 import Home from './pages/Home'
 import Search from './pages/Search'
 import Saved from './pages/Saved'
+import NavBar from './components/NavBar'
+import Drawer from './components/Drawer'
 
 const App = () => {
   return (
     <Router>
       <div>
+        <NavBar />
+        <Drawer />
         <Switch>
           <Route exact path="/">
             <Home />
