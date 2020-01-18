@@ -11,3 +11,4 @@ app.use(express.json())
 require('./routes')(app)
 
 app.listen(3001)
+// require('mongoose').connection.once('open', () => app.listen(3001))
