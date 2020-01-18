@@ -1,4 +1,4 @@
-import React, { useState, setState } from 'react'
+import React, { useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Button from '@material-ui/core/Button'
@@ -26,16 +26,19 @@ const Drawer = () => {
     isOpen: false
   })
 
-  const toggleDrawer = open => {
-    setState({ ...drawerState, isOpen: open })
+  const toggleDrawer = (side, open) => event => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setDrawerState({ ...drawerState, isOpen: open })
   }
 
-  const sideList = () => (
+  const sideList = side => (
     <div
       className={classes.list}
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
     >
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -59,16 +62,18 @@ const Drawer = () => {
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}>Open Drawer</Button>
+      <Button onClick={toggleDrawer('isOpen',true)}>Open Drawer</Button>
       <SwipeableDrawer
         open={drawerState.isOpen}
         onClose={toggleDrawer(false)}
         onOpen={toggleDrawer(true)}
       >
-        {sideList()}
+        {sideList('isOpen')}
       </SwipeableDrawer>
     </div>
   )
 }
+
+
 
 export default Drawer
