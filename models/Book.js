@@ -5,7 +5,8 @@ module.exports = (model, Schema) => {
     authors: [String],
     description: String,
     image: String,
-    link: String
+    link: String,
+    publishedDate: String
   })
 
   return model('Book', Book)
