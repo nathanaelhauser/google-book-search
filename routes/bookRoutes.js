@@ -1,4 +1,5 @@
 const { Book } = require('../models')
+const axios = require('axios')
 
 module.exports = app => {
 
@@ -10,7 +11,7 @@ module.exports = app => {
   })
 
   // Get a book
-  app.get('/books/$id', (req, res) => {
+  app.get('/books/:id', (req, res) => {
     Book.findOne({ _id: req.params.id })
       .then(book => res.json(book))
       .catch(e => console.log(e))
@@ -18,29 +19,28 @@ module.exports = app => {
 
   // Add a book
   app.post('/books', (req, res) => {
-    console.log('trying to create')
-    console.log(req)
-    // Book.create(req.body)
-    //   .then(book => {
-    //     console.log('created a book')
-    //     console.log(book)
-    //     res.json(book)
-    //   })
-    //   .catch(e => console.log(e))
-    res.sendStatus(200)
+    Book.create(req.body)
+      .then(book => res.json(book))
+      .catch(e => console.log(e))
   })
 
   // Update a book
-  app.put('/books/$id', (req, res) => {
+  app.put('/books/:id', (req, res) => {
     Book.updateOne({ _id: req.params.id }, req.body )
       .then(() => res.sendStatus(200))
       .catch(e => console.log(e))
   })
 
   // Delete a book
-  app.delete('/books/$id', (req, res) => {
+  app.delete('/books/:id', (req, res) => {
     Book.deleteOne({ _id: req.params.id })
       .then(() => res.sendStatus(200))
+      .catch(e => console.log(e))
+  })
+
+  app.get('/googlebooks/:search', (req, res) => {
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.search}`)
+      .then(({ data }) => res.json(data))
       .catch(e => console.log(e))
   })
 
