@@ -1,8 +1,8 @@
 import React from 'react'
-
+import BookForm from '../../components/BookForm'
 const Search = () => {
   return (
-    <div>Search</div>
+    <BookForm />
   )
 }
 
