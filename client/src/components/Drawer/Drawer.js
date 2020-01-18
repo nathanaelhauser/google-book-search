@@ -1,5 +1,6 @@
 import React, { useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import DrawerContext from '../../utils/DrawerContext'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
@@ -53,7 +54,7 @@ const Drawer = () => {
   )
 
   return (
-    <div>
+    <DrawerContext.Provider value={drawerState}>
       <Button onClick={toggleDrawer(true)}>Open Drawer</Button>
       <SwipeableDrawer
         open={drawerState.isOpen}
@@ -62,7 +63,7 @@ const Drawer = () => {
       >
         {sideList()}
       </SwipeableDrawer>
-    </div>
+    </DrawerContext.Provider>
   )
 }
 
