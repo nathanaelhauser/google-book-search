@@ -1,7 +1,8 @@
-import { createContext } from 'React'
+import { createContext } from 'react'
 
 const DrawerContext = createContext({
-  isOpen: false
+  isOpen: false,
+  toggleDrawer: () => {}
 })
 
 export default DrawerContext

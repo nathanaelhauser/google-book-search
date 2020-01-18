@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import DrawerContext from '../../utils/DrawerContext'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -21,11 +22,19 @@ const useStyles = makeStyles(theme => ({
 const NavBar = () => {
   const classes = useStyles()
 
+  const { isOpen, toggleDrawer } = useContext(DrawerContext)
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton 
+            edge="start" 
+            className={classes.menuButton} 
+            color="inherit" 
+            aria-label="menu"
+            onClick={toggleDrawer(true)}
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>

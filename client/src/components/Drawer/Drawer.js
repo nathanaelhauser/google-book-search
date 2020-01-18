@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
@@ -22,16 +22,7 @@ const useStyles = makeStyles({
 const Drawer = () => {
   const classes = useStyles()
 
-  const [ drawerState, setDrawerState ] = useState({
-    isOpen: false
-  })
-
-  const toggleDrawer = (open) => event => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-    setDrawerState({ ...drawerState, isOpen: open })
-  }
+  const { isOpen, toggleDrawer } = useContext(DrawerContext)
 
   const sideList = () => (
     <div
@@ -54,19 +45,16 @@ const Drawer = () => {
   )
 
   return (
-    <DrawerContext.Provider value={drawerState}>
-      <Button onClick={toggleDrawer(true)}>Open Drawer</Button>
+    <div>
       <SwipeableDrawer
-        open={drawerState.isOpen}
+        open={isOpen}
         onClose={toggleDrawer(false)}
         onOpen={toggleDrawer(true)}
       >
         {sideList()}
       </SwipeableDrawer>
-    </DrawerContext.Provider>
+    </div>
   )
 }
-
-
 
 export default Drawer
