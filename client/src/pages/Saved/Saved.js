@@ -1,8 +1,13 @@
 import React from 'react'
+import BookCard from '../../components/BookCard'
 
 const Saved = () => {
+
   return (
-    <div>Saved</div>
+    <div>
+      <h1>Saved</h1>
+      <BookCard />
+    </div>
   )
 }
 

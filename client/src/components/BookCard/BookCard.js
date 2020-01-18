@@ -32,34 +32,46 @@ const useStyles = makeStyles({
 const BookCard = props => {
   const classes = useStyles()
 
-  const { title, authors, description, image, link, published, action } = props.book
+  const books = {
+    title: 'Harry Potter and the Cursed Child – Parts One and Two (Special Rehearsal Edition)',
+    authors: [
+      "J.K. Rowling",
+      "John Tiffany",
+      "Jack Thorne"
+    ],
+    description: 'Based on an original new story by J.K. Rowling, Jack Thorne and John Tiffany, a new play by Jack Thorne, Harry Potter and the Cursed Child is the eighth story in the Harry Potter series and the first official Harry Potter story to be presented on stage. The play received its world premiere in London’s West End on 30th July 2016. It was always difficult being Harry Potter and it isn’t much easier now that he is an overworked employee of the Ministry of Magic, a husband and father of three school-age children. While Harry grapples with a past that refuses to stay where it belongs, his youngest son Albus must struggle with the weight of a family legacy he never wanted. As past and present fuse ominously, both father and son learn the uncomfortable truth: sometimes, darkness comes from unexpected places.',
+    image: 'http://books.google.com/books/content?id=tcSMCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+    link: 'http://books.google.com/books?id=tcSMCwAAQBAJ&printsec=frontcover&dq=harry+potter&hl=&cd=1&source=gbs_api',
+    published: '2016-07-31',
+    action: 'Delete'
+  }
 
   return (
     <Card className={classes.card}>
       <CardHeader
-        title={title}
-        subheader={published}
+        title={books.title}
+        subheader={books.published}
       />
       <CardMedia 
         className={classes.media}
-        image={image} 
+        image={books.image} 
       />
       <CardContent>
         <Typography 
           className={classes.title} 
           color="textPrimary"
           component="h2">
-            {authors.join('•')}
+            {books.authors.join('•')}
         </Typography>
         <Typography  
           variant="body2"
           component="p">
-            {description}
+            {books.description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" href={link}>View</Button>
-        <Button size="small">{action}</Button>
+        <Button size="small" href={books.link}>View</Button>
+        <Button size="small">{books.action}</Button>
       </CardActions>
     </Card>
   )
