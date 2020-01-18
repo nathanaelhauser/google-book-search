@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import DrawerContext from './utils/DrawerContext'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom'
+import DrawerContext from './utils/DrawerContext'
 import Home from './pages/Home'
 import Search from './pages/Search'
 import Saved from './pages/Saved'
