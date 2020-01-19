@@ -11,7 +11,9 @@ import Saved from './pages/Saved'
 import NavBar from './components/NavBar'
 import Drawer from './components/Drawer'
 
+
 const App = () => {
+ 
 
   const [drawerState, setDrawerState] = useState({
     isOpen: false
@@ -25,6 +27,8 @@ const App = () => {
   }
 
   return (
+    
+   
     <DrawerContext.Provider value={drawerState}>
       <Router>
         <div>
@@ -44,6 +48,7 @@ const App = () => {
         </div>
       </Router>
     </DrawerContext.Provider>
+    
   )
 }
 
