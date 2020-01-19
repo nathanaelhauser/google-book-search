@@ -27,10 +27,16 @@ const BookForm = () => {
   const classesB = useButtonStyles()
   const { handleInputChange, handleSearch, book } = useContext(SearchContext)
 
+  const handleInputEnter = event => {
+    if (event.key === 'Enter') {
+      handleSearch(event)
+    }
+  }
+
   return (
     <div className={classes.root && classesB.root} align='center' >
     <form className={classes.root} noValidate autoComplete="off" align='center'>
-      <TextField type='text' name='book' id="standard-basic" label="Book Title" value={book} onChange={handleInputChange}/>
+      <TextField type='text' name='book' id="standard-basic" label="Book Title" value={book} onChange={handleInputChange} onKeyPress={handleInputEnter}/>
       <Button  variant="contained" color="primary" onClick={handleSearch}>
         SEARCH
       </Button>
