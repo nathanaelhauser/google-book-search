@@ -5,15 +5,22 @@ import SavedList from '../../components/SavedList'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 
-const { getSavedBooks } = BookAPI
+const { getSavedBooks, deleteBook } = BookAPI
 
 const Saved = () => {
   const [savedState, setSavedState] = useState({
     books: []
   })
 
-  savedState.handleDeleteBook = () => {
-    console.log('will delete')
+  savedState.handleDeleteBook = (event, identifier) => {
+    deleteBook(identifier)
+      .then(() => {
+        let [...tempBooks] = savedState.books
+        tempBooks = tempBooks.filter(book => book._id !== identifier)
+        setSavedState({ ...savedState, books: tempBooks })
+        console.log('deleted')
+      })
+      .catch(e => console.error(e))
   }
 
   useEffect(() => {
