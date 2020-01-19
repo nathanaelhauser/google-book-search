@@ -45,7 +45,7 @@ const BookCard = props => {
           className={classes.title} 
           color="textSecondary"
           component="h2">
-            {props.authors.split(',').join(' • ')}
+            {props.authors.replace(',', ' • ')}
         </Typography>
         <Typography  
           variant="body2"
