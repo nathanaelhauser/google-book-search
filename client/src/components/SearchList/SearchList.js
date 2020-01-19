@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 const SearchList = () => {
   const classes = useStyles()
-  const { books } = useContext(SearchContext)
+  const { books, handleSaveBook } = useContext(SearchContext)
 
   return (
     <Paper className={classes.root}>
@@ -31,7 +31,8 @@ const SearchList = () => {
               description={book.description}
               image={book.image}
               link={book.link}
-              action="Save" />)
+              action="Save"
+              handleBookButtonClick={handleSaveBook} />)
         }
       </Grid>
     </Paper>

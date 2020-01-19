@@ -49,8 +49,21 @@ const BookCard = props => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant="contained" size="small" href={props.link} color="primary">View</Button>
-          <Button variant="contained" size="small" color="secondary">{props.action}</Button>
+          <Button 
+            variant="contained" 
+            size="small" 
+            href={props.link} 
+            color="primary">
+              View
+          </Button>
+          <Button 
+            variant="contained" 
+            size="small" 
+            color="secondary"
+            data-id={props.key}
+            onClick={props.handleBookButtonClick}>
+              {props.action}
+          </Button>
         </CardActions>
       </Card>
     </Grid>

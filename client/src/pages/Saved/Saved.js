@@ -11,7 +11,6 @@ const Saved = () => {
       <div align="center">
         <Typography variant="h2">Saved Books</Typography>
         <SavedList />
-        {/* <BookCard /> */}
       </div>
     </Container>
     

@@ -5,8 +5,7 @@ const SearchContext = createContext({
   books: [],
   handleInputChange: () => {},
   handleSearch: () => {},
-  handleSaveBook: () => {},
-  handleViewBook: () => {}
+  handleSaveBook: () => {}
 })
 
 export default SearchContext

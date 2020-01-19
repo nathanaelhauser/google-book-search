@@ -40,6 +40,10 @@ const { getBooks, searchBooks, updateBook, deleteBook} = BookAPI
       .catch(e => console.error(e))
   }
 
+  bookState.handleSaveBook = event => {
+    let blah = event.target.dataset.id
+  }
+
   return (
     <SearchContext.Provider value={bookState}>
       <BookForm/>
