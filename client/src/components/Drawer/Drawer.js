@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
-import { useRouteMatch } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
@@ -25,7 +23,6 @@ const Drawer = () => {
   const classes = useStyles()
 
   const { isOpen, toggleDrawer } = useContext(DrawerContext)
-  const match = useRouteMatch()
 
   const redirect = page => event => window.location.href = `http://${window.location.host}${page}`
 
