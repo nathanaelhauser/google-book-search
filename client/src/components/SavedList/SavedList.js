@@ -1,43 +1,45 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import Divider from '@material-ui/core/Divider'
-import DeleteIcon from '@material-ui/icons/Delete'
-
+import SavedContext from '../../utils/SavedContext'
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
+import BookCard from '../BookCard'
+import lightBlue from '@material-ui/core/colors/lightBlue'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
-  },
+    paddingTop: 20,
+    paddingBottom: 20,
+    backgroundColor: lightBlue
+  }
 }))
 
 const SavedList = props => {
   const classes = useStyles()
 
+  const { books, handleDeleteBook } = useContext(SavedContext)
+
   return (
-    <div className={classes.root}>
-      <List component="nav" aria-label="main mailbox folders">
-        <ListItem button>
-          <ListItemText primary="Book1" />
-          <ListItemIcon>
-            <DeleteIcon />
-          </ListItemIcon>
-        </ListItem>
-        <Divider />
-        <ListItem button>
-          <ListItemText primary="Book2" />
-          <ListItemIcon>
-            <DeleteIcon />
-          </ListItemIcon>
-        </ListItem>
-      </List>
-      
-    </div>
+    <Paper className={classes.root}>
+      <Grid container spacing={3}>
+        {
+          books.length
+            ? books.map((book, index) =>
+                <BookCard
+                  key={index}
+                  identifier={book._id}
+                  title={book.title}
+                  authors={book.authors ? book.authors.join(',') : ''}
+                  publishedDate={book.publishedDate}
+                  description={book.description}
+                  image={book.image}
+                  link={book.link}
+                  action="Delete"
+                  handleBookButtonClick={handleDeleteBook} />)
+            : ''
+        }
+      </Grid>
+    </Paper>
   )
 }
 

@@ -13,14 +13,14 @@ const Saved = () => {
   })
 
   savedState.handleDeleteBook = () => {
-
+    console.log('will delete')
   }
 
   useEffect(() => {
     getSavedBooks()
-      .then(books => setSavedState({ ...savedState, books }))
+      .then(({ data: books }) => setSavedState({ ...savedState, books }))
       .catch(e => console.error(e))
-  })
+  }, [])
 
   return (
     <SavedContext.Provider value={savedState}>
