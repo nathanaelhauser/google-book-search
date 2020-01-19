@@ -10,22 +10,15 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
   card: {
+    margin: 30
   },
   mediaBox: {
     display: 'flex',
     justifyContent: 'center'
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
   title: {
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
+  }
 })
 
 const BookCard = props => {
@@ -35,7 +28,7 @@ const BookCard = props => {
     <Card className={classes.card}>
       <CardHeader
         title={props.title}
-        subheader={props.published}
+        subheader={props.publishedDate}
       />
       <Box className={classes.mediaBox}>
         <img src={props.image} alt={props.title} />
