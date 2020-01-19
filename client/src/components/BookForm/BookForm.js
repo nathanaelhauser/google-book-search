@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import SearchContext from '../../utils/SearchContext'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,12 +25,13 @@ const useButtonStyles = makeStyles(theme => ({
 const BookForm = () => {
   const classes = useStyles();
   const classesB = useButtonStyles()
+  const { handleInputChange, handleSearch, book } = useContext(SearchContext)
 
   return (
-    <div className={classes.root} align='center' >
+    <div className={classes.root && classesB.root} align='center' >
     <form className={classes.root} noValidate autoComplete="off" align='center'>
-      <TextField id="standard-basic" label="Book Title" />
-      <Button variant="contained" color="primary">
+      <TextField type='text' name='book' id="standard-basic" label="Book Title" value={book} onChange={handleInputChange}/>
+      <Button  variant="contained" color="primary" onClick={handleSearch}>
         SEARCH
       </Button>
     </form>
