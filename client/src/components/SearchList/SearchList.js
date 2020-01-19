@@ -25,6 +25,7 @@ const SearchList = () => {
           books.map((book, index) =>
             <BookCard
               key={index}
+              identifier={index}
               title={book.title}
               authors={book.authors ? book.authors.join(',') : ''}
               publishedDate={book.publishedDate}

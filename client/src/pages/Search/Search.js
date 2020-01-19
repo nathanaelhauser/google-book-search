@@ -4,9 +4,9 @@ import BookAPI from '../../utils/BookAPI'
 import SearchContext from '../../utils/SearchContext'
 import SearchList from '../../components/SearchList'
 
-const { getBooks, searchBooks, updateBook, deleteBook} = BookAPI
+const { searchForBooks, addBook } = BookAPI
 
- const Search = () => {
+const Search = () => {
 
   const [bookState, setBookState] = useState ({
     book: '',
@@ -19,29 +19,33 @@ const { getBooks, searchBooks, updateBook, deleteBook} = BookAPI
 
   bookState.handleSearch = event => {
     event.preventDefault()
-    console.log(`Searching for ${bookState.book}`)
-    getBooks(bookState.book)
+    searchForBooks(bookState.book)
       .then(({ data: { items: books } }) => {
         let tempBooks = []
         books.forEach(({ volumeInfo: book}) => {
-          console.log(book)
           tempBooks.push({
             title: book.title,
             authors: book.authors,
             publishedDate: book.publishedDate,
             description: book.description,
-            image: book.imageLinks.thumbnail,
+            image: book.imageLinks ? book.imageLinks.thumbnail : '',
             link: book.previewLink
           })
         })
-        console.log(tempBooks)
         setBookState({ ...bookState, book: '', books: tempBooks })
       })
       .catch(e => console.error(e))
   }
 
-  bookState.handleSaveBook = event => {
-    let blah = event.target.dataset.id
+  bookState.handleSaveBook = (event, identifier) => {
+    console.log(bookState.books[identifier])
+    addBook(bookState.books[identifier])
+      .then(book => {
+        let [...tempBooks] = bookState.books
+        tempBooks.splice(identifier, 1)
+        setBookState({ ...bookState, books: tempBooks })
+      })
+      .catch(e => console.error(e))
   }
 
   return (

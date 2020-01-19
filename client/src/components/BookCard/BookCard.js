@@ -25,6 +25,8 @@ const useStyles = makeStyles({
 const BookCard = props => {
   const classes = useStyles()
 
+  const handleBookButtonClick = event => props.handleBookButtonClick(event, props.identifier)
+
   return (
     <Grid item sm={12} md={6}>
       <Card className={classes.card}>
@@ -60,8 +62,7 @@ const BookCard = props => {
             variant="contained" 
             size="small" 
             color="secondary"
-            data-id={props.key}
-            onClick={props.handleBookButtonClick}>
+            onClick={handleBookButtonClick}>
               {props.action}
           </Button>
         </CardActions>
