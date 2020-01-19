@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import BookForm from '../../components/BookForm'
 import BookAPI from '../../utils/BookAPI'
 import SearchContext from '../../utils/SearchContext'
+import SearchSection from '../../components/SearchSection'
 
 const { getBooks, searchBooks, updateBook, deleteBook} = BookAPI
 
