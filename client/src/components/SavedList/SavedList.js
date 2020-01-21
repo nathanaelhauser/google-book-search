@@ -3,14 +3,17 @@ import { makeStyles } from '@material-ui/core/styles'
 import SavedContext from '../../utils/SavedContext'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
 import BookCard from '../BookCard'
-import lightBlue from '@material-ui/core/colors/lightBlue'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    backgroundColor: lightBlue
+    padding: 15,
+    backgroundColor: "#3f51b5"
+  },
+  text: {
+    color: 'white'
   }
 }))
 
@@ -36,7 +39,14 @@ const SavedList = props => {
                   link={book.link}
                   action="Delete"
                   handleBookButtonClick={handleDeleteBook} />)
-            : ''
+            : <Container>
+                <Typography 
+                  align="center" 
+                  variant="h5"
+                  className={classes.text}>
+                    Add Books from the Search Page!
+                </Typography>
+              </Container>
         }
       </Grid>
     </Paper>

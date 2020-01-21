@@ -10,11 +10,10 @@ import Search from './pages/Search'
 import Saved from './pages/Saved'
 import NavBar from './components/NavBar'
 import Drawer from './components/Drawer'
-
+import Footer from './components/Footer'
 
 const App = () => {
  
-
   const [drawerState, setDrawerState] = useState({
     isOpen: false
   })
@@ -27,13 +26,13 @@ const App = () => {
   }
 
   return (
-    
    
     <DrawerContext.Provider value={drawerState}>
       <Router>
         <div>
           <NavBar />
           <Drawer />
+
           <Switch>
             <Route exact path="/">
               <Home />
@@ -45,6 +44,8 @@ const App = () => {
               <Search />
             </Route>
           </Switch>
+          
+          <Footer />
         </div>
       </Router>
     </DrawerContext.Provider>

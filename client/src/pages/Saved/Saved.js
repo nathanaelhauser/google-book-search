@@ -27,13 +27,12 @@ const Saved = () => {
     getSavedBooks()
       .then(({ data: books }) => setSavedState({ ...savedState, books }))
       .catch(e => console.error(e))
-  }, [])
+  }, [savedState])
 
   return (
     <SavedContext.Provider value={savedState}>
       <Container>
         <div align="center">
-          <Typography variant="h2">Saved Books</Typography>
           <SavedList />
         </div>
       </Container>
