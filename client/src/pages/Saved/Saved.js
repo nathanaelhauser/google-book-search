@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import SavedContext from '../../utils/SavedContext'
 import BookAPI from '../../utils/BookAPI'
 import SavedList from '../../components/SavedList'
-import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 
 const { getSavedBooks, deleteBook } = BookAPI
