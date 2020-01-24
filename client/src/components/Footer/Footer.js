@@ -47,12 +47,7 @@ const Footer = () => {
       <Container>
         <Grid container spacing={3} className={classes.gridFooter}>
           <Grid item xs={12} sm={6} className={classes.leftFooter}>
-            <span>
-              Book Icon made by
-              <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware"> Good Ware </a> 
-              from 
-              <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
-            </span>
+            
           </Grid>
           <Grid item xs={12} sm={6} className={classes.rightFooter}>
             <IconButton
