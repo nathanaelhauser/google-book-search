@@ -12,3 +12,5 @@ app.use(express.json())
 require('./routes')(app)
 
 require('mongoose').connection.once('open', () => app.listen(PORT))
+
+console.log('hi')
