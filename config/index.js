@@ -1,17 +1,8 @@
 const mongoose = require('mongoose')
 
-const MONDODB_URI = process.env.MONDODB_URI || 'mongodb://localhost/googlebooks'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/googlebooks'
 
-
-console.log(`
----------------------------------------------
----------------------------------------------
-${MONDODB_URI}
----------------------------------------------
----------------------------------------------
-`)
-
-module.exports = mongoose.connect(MONDODB_URI, {
+module.exports = mongoose.connect(MONGODB_URI, {
   useCreateIndex: true,
   useFindAndModify: true,
   useNewUrlParser: true,
