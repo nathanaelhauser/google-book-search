@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
@@ -24,8 +25,6 @@ const Drawer = () => {
 
   const { isOpen, toggleDrawer } = useContext(DrawerContext)
 
-  const redirect = page => event => window.location.href = `http://${window.location.host}${page}`
-
   const sideList = () => (
     <div
       className={classes.list}
@@ -34,18 +33,24 @@ const Drawer = () => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <ListItem button key={'Home'} onClick={redirect('/')}>
-          <ListItemIcon><HomeIcon /></ListItemIcon>
-          <ListItemText primary={'Home'} />
-        </ListItem>
-        <ListItem button key={'Search'} onClick={redirect('/search')}>
-          <ListItemIcon><SearchIcon /></ListItemIcon>
-          <ListItemText primary={'Search'} />
-        </ListItem>
-        <ListItem button key={'Saved'} onClick={redirect('/saved')}>
-          <ListItemIcon><SaveIcon /></ListItemIcon>
-          <ListItemText primary={'Saved'} />
-        </ListItem>
+        <Link to="/">
+          <ListItem button key={'Home'}>
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText primary={'Home'} />
+          </ListItem>
+        </Link>
+        <Link to="/search">
+          <ListItem button key={'Search'}>
+            <ListItemIcon><SearchIcon /></ListItemIcon>
+            <ListItemText primary={'Search'} />
+          </ListItem>
+        </Link>
+        <Link to="/saved">
+          <ListItem button key={'Saved'}>
+            <ListItemIcon><SaveIcon /></ListItemIcon>
+            <ListItemText primary={'Saved'} />
+          </ListItem>
+        </Link>
       </List>
     </div>
   )
