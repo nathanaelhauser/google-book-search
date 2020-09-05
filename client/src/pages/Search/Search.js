@@ -51,6 +51,7 @@ const Search = () => {
   return (
     <SearchContext.Provider value={bookState}>
       <BookForm/>
+      <br />
       <SearchList/>
     </SearchContext.Provider>
   )

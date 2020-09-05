@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,7 +32,7 @@ const App = () => {
         <div>
           <NavBar />
           <Drawer />
-
+          <br />
           <Switch>
             <Route exact path="/">
               <Home />

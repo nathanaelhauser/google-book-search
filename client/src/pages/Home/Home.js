@@ -30,7 +30,7 @@ const Home = _ => {
   const classes = useStyles()
 
   return (
-    <Grid container spacing={4} direction="row" justify="space-around" alignItems="center">
+    <Grid container spacing={6} direction="row" justify="center" alignItems="center">
       <Grid item xs={12} sm={6} md={4} className={classes.buttonContainer}>
         <Button component={RouterLink} to="/search">
           <Card className={classes.card}>
