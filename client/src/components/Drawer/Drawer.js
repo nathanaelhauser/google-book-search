@@ -1,15 +1,14 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, forwardRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
+import {
+  SwipeableDrawer,
+  List
+} from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
 import SaveIcon from '@material-ui/icons/Save'
+import ListItemLink from '../ListItemLink'
 
 const useStyles = makeStyles({
   list: {
@@ -33,24 +32,9 @@ const Drawer = () => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <Link to="/">
-          <ListItem button key={'Home'}>
-            <ListItemIcon><HomeIcon /></ListItemIcon>
-            <ListItemText primary={'Home'} />
-          </ListItem>
-        </Link>
-        <Link to="/search">
-          <ListItem button key={'Search'}>
-            <ListItemIcon><SearchIcon /></ListItemIcon>
-            <ListItemText primary={'Search'} />
-          </ListItem>
-        </Link>
-        <Link to="/saved">
-          <ListItem button key={'Saved'}>
-            <ListItemIcon><SaveIcon /></ListItemIcon>
-            <ListItemText primary={'Saved'} />
-          </ListItem>
-        </Link>
+        <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
+        <ListItemLink to="/search" primary="Search" icon={<SearchIcon />} />
+        <ListItemLink to="/saved" primary="Saved" icon={<SaveIcon />} />
       </List>
     </div>
   )
