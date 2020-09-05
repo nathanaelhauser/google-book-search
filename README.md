@@ -2,7 +2,7 @@
 
 ### Purpose  
 
-Find your favorite books on Google books and save them for later!  
+Find your favorite books on Google Books API and save them for later!  
 
 ### How to use  
 
