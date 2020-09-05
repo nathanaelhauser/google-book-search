@@ -10,7 +10,6 @@ import Search from './pages/Search'
 import Saved from './pages/Saved'
 import NavBar from './components/NavBar'
 import Drawer from './components/Drawer'
-import Footer from './components/Footer'
 
 const App = () => {
  
@@ -44,8 +43,6 @@ const App = () => {
               <Search />
             </Route>
           </Switch>
-          
-          <Footer />
         </div>
       </Router>
     </DrawerContext.Provider>
